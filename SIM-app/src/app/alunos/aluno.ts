@@ -1,7 +1,7 @@
 export class Aluno {
-    nome: string;
-    login: string;
-    metas: Map<string,string>;
+  nome: string;
+  login: string;
+  criterios: Map<string,string>;
 
   constructor() {
     this.clean();
@@ -10,22 +10,26 @@ export class Aluno {
   clean(): void {
     this.nome = "";
     this.login = "";
-    this.metas = new Map<string,string>();
+    this.criterios = new Map<string,string>();
   }
 
   clone(): Aluno {
     var aluno: Aluno = new Aluno();
-    aluno.nome = this.nome;
-    aluno.login = this.login;
-    aluno.metas = this.cloneMetas();
+    aluno.criterios = new Map<string,string>();
+    aluno.copyFrom(this);
     return aluno;
   }
 
-  cloneMetas(): Map<string,string> {
-    var metas: Map<string,string> = new Map<string,string>();
-    for (let key in this.metas) {
-      metas[key] = this.metas[key];
+  copyFrom(from: Aluno): void {
+    this.nome = from.nome;
+    this.login = from.login;
+    this.copyCriteriosFrom(from.criterios);
+  }
+
+  copyCriteriosFrom(from: Map<string,string>): void {
+    this.criterios = new Map<string,string>();
+    for (let key in from) {
+      this.criterios[key] = from[key];
     }
-    return metas;
   }
 }
