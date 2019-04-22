@@ -5,7 +5,7 @@
     text: string;
 
     constructor(){
-        this.from = "cdbm@cin.ufpe.br";
+        this.from = "simappsender@gmail.com";
         this.to = "";
         this.text ="";
         this.subject= "";
