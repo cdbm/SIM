@@ -1,13 +1,15 @@
 import express = require('express');
 import bodyParser = require("body-parser");
-
+import nodemailer = require('nodemailer');
 import { Aluno } from '../SIM-app/src/app/alunos/aluno';
 import {CadastroDeAlunos} from './cadastroalunos';
+//import {Mailer} from './mailer';
 
+import fs = require('fs');
 var app = express();
 
 var cadastro: CadastroDeAlunos = new CadastroDeAlunos();
-
+//var mailer : Mailer = new Mailer();
 var allowCrossDomain = function(req: any, res: any, next: any) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -31,6 +33,24 @@ app.post('/aluno', function (req: express.Request, res: express.Response) {
     res.send({"failure": "O aluno não pode ser cadastrado"});
   }
 })
+
+app.post('/sendemail', function (req: express.Request, res: express.Response) {
+    
+    const nodemailer = require('nodemailer');
+    
+    var config = JSON.parse(fs.readFileSync( "config.json").toString("utf-8"));
+    const transporter = nodemailer.createTransport(config);
+    
+      transporter.sendMail(req.body, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email enviado: ' + info.response);
+        }
+      });
+    res.send({"success": "email enviado"});
+})
+
 
 app.put('/aluno', function (req: express.Request, res: express.Response) {
   var aluno: Aluno = <Aluno> req.body;

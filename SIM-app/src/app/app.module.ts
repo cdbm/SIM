@@ -12,6 +12,7 @@ import { CorrecaoComponent } from './correcao/correcao.component';
 import { LoginComponent } from './login/login.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { AlunoService } from './alunos/aluno.service';
+import {FeedbackService} from './feedback/feedback.service';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,14 @@ import { AlunoService } from './alunos/aluno.service';
       {
         path: 'alunos',
         component: AlunosComponent
+      },
+      {
+        path: 'feedbacks',
+        component: FeedbackComponent
       }
     ])
   ],
-  providers: [AlunoService],
+  providers: [AlunoService, FeedbackService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

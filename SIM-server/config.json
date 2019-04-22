@@ -3,8 +3,8 @@
     "port": 587,
     "secure": false, 
     "auth": {
-        "user": "cdbm@cin.ufpe.br",
-        "pass": "minecraft e legal"
+        "user": "simappsender@gmail.com",
+        "pass": "simappsend123"
     },
     "tls": { "rejectUnauthorized": true }
   }

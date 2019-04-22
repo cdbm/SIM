@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Email } from './email';
-import { GmailService} from  '../gmail.service';
-
+import { FeedbackService} from './feedback.service';
 
 @Component({
   selector: 'app-feedback',
@@ -12,12 +11,19 @@ export class FeedbackComponent implements OnInit {
   email : Email = new Email();
   
 
-  constructor(private gmailService: GmailService) { }
+  constructor(private feedbackService : FeedbackService ) { }
 
   ngOnInit() {
   }
 
   enviarEmail(email){
-    this.gmailService.send(email);
+    this.feedbackService.send(email)
+    .then(ab => {
+      if (ab) {
+         this.email = new Email();
+      }
+   })
+   .catch(erro => alert(erro));
+   alert("feedback enviado");
   }
 }
