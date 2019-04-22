@@ -1,3 +1,17 @@
-<p>
-  feedback works!
-</p>
+e
+  <tr>
+     <td><label>To</label></td>
+     <td><input [(ngModel)]="email.to" ></td>
+     <td><button (click)="enviarEmail(email)">Enviar</button></td>
+  </tr>
+  <tr>
+    <td><label>subject </label></td>
+    <td><input [(ngModel)]="email.subject" ></td>
+ </tr>
+
+
+  <tr>
+     <td><label>message </label></td>
+     <td><input [(ngModel)]="email.text" ></td>
+  </tr>
+  </table>
