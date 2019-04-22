@@ -1,0 +1,10 @@
+{
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "secure": false, 
+    "auth": {
+        "user": "cdbm@cin.ufpe.br",
+        "pass": "minecraft e legal"
+    },
+    "tls": { "rejectUnauthorized": true }
+  }
