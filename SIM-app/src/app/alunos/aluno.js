@@ -26,6 +26,18 @@ var Aluno = /** @class */ (function () {
             this.criterios[key] = from[key];
         }
     };
+    Aluno.prototype.verificaAluno = function () {
+        var conceitos = [];
+        for (var key in this.criterios) {
+            conceitos.push(key);
+            if (this.criterios[key] >= 0 && this.criterios[key] <= 10) {
+            }
+            else {
+                this.criterios[key] = '';
+            }
+        }
+        return conceitos;
+    };
     return Aluno;
 }());
 exports.Aluno = Aluno;

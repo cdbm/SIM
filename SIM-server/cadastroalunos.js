@@ -19,8 +19,11 @@ var CadastroDeAlunos = /** @class */ (function () {
     };
     CadastroDeAlunos.prototype.atualizar = function (aluno) {
         var result = this.alunos.find(function (a) { return a.login == aluno.login; });
-        if (result)
+        if (result) {
             result.copyFrom(aluno);
+            var verificacao = result.verificaAluno();
+            console.log(verificacao);
+        }
         return result;
     };
     CadastroDeAlunos.prototype.getAlunos = function () {

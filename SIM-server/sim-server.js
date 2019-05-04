@@ -42,7 +42,7 @@ app.post('/sendemail', function (req, res) {
             console.log('Email enviado: ' + info.response);
         }
     });
-    res.send({ "success": "O aluno foi cadastrado com sucesso" });
+    res.send({ "success": "email enviado" });
 });
 app.put('/aluno', function (req, res) {
     var aluno = req.body;

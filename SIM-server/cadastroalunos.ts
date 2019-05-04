@@ -19,7 +19,10 @@ export class CadastroDeAlunos {
 
   atualizar(aluno: Aluno): Aluno {
     var result: Aluno = this.alunos.find(a => a.login == aluno.login);
-    if (result) result.copyFrom(aluno);
+    if (result) {
+      result.copyFrom(aluno);
+      var verificacao: boolean = result.verificaAluno();
+    }
     return result;
   }
 
