@@ -1,6 +1,6 @@
 import { Aluno } from '../SIM-app/src/app/alunos/aluno';
 
-export class CadastroDeAlunos {
+export class CadastroAlunos {
   alunos: Aluno[] = [];
 
   criar(aluno: Aluno): Aluno {
@@ -19,10 +19,7 @@ export class CadastroDeAlunos {
 
   atualizar(aluno: Aluno): Aluno {
     var result: Aluno = this.alunos.find(a => a.login == aluno.login);
-    if (result) {
-      result.copyFrom(aluno);
-      var verificacao: boolean = result.verificaAluno();
-    }
+    if (result) result.copyFrom(aluno);
     return result;
   }
 
@@ -30,3 +27,4 @@ export class CadastroDeAlunos {
     return this.alunos;
   }
 }
+
