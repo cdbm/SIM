@@ -4,11 +4,10 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var cadastroalunos_1 = require("./cadastroalunos");
 var cadastrosubs_1 = require("./cadastrosubs");
-//import {Mailer} from './mailer';
 var fs = require("fs");
 var app = express();
 exports.app = app;
-var cadastro = new cadastroalunos_1.CadastroDeAlunos();
+var cadastro = new cadastroalunos_1.CadastroAlunos();
 var cad = new cadastrosubs_1.CadastroSubs();
 //var mailer : Mailer = new Mailer();
 var allowCrossDomain = function (req, res, next) {
@@ -67,6 +66,16 @@ app.put('/aluno', function (req, res) {
     }
     else {
         res.send({ "failure": "O aluno não pode ser atualizado" });
+    }
+});
+app.put('/sub', function (req, res) {
+    var sub = req.body;
+    sub = cad.atualizar(sub);
+    if (sub) {
+        res.send({ "success": "A submissão foi atualizada com sucesso" });
+    }
+    else {
+        res.send({ "failure": "A submissão não pode ser atualizada" });
     }
 });
 app.listen(3000, function () {

@@ -7,6 +7,15 @@ export class CadastroSubs {
         return sub;
     }
 
+    atualizar(sub: Sub): Sub {
+        var result: Sub = this.subs.find(a => a.aluno == sub.aluno);
+        if (result) {
+            result.nota = sub.nota;
+            result.feedback = sub.feedback;
+        };
+        return result;
+    }
+
     getSubs(): Sub[] {
         return this.subs;
       }

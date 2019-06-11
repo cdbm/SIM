@@ -2,15 +2,15 @@ import express = require('express');
 import bodyParser = require("body-parser");
 import nodemailer = require('nodemailer');
 import { Aluno } from '../SIM-app/src/app/alunos/aluno';
-import {CadastroDeAlunos} from './cadastroalunos';
+import {CadastroAlunos} from './cadastroalunos';
 import {Sub} from "../SIM-app/src/app/feedback/sub";
 import {CadastroSubs} from "./cadastrosubs";
-//import {Mailer} from './mailer';
+import {Mailer} from './mailer';
 
 import fs = require('fs');
 var app = express();
 
-var cadastro: CadastroDeAlunos = new CadastroDeAlunos();
+var cadastro: CadastroAlunos = new CadastroAlunos();
 var cad : CadastroSubs = new CadastroSubs();
 //var mailer : Mailer = new Mailer();
 var allowCrossDomain = function(req: any, res: any, next: any) {
@@ -78,6 +78,16 @@ app.put('/aluno', function (req: express.Request, res: express.Response) {
     res.send({"success": "O aluno foi atualizado com sucesso"});
   } else {
     res.send({"failure": "O aluno não pode ser atualizado"});
+  }
+})
+
+app.put('/sub', function (req: express.Request, res: express.Response) {
+  var sub: Sub = <Sub> req.body;
+  sub = cad.atualizar(sub);
+  if (sub) {
+    res.send({"success": "A submissão foi atualizada com sucesso"});
+  } else {
+    res.send({"failure": "A submissão não pode ser atualizada"});
   }
 })
 

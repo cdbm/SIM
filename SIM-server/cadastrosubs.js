@@ -8,6 +8,15 @@ var CadastroSubs = /** @class */ (function () {
         this.subs.push(sub);
         return sub;
     };
+    CadastroSubs.prototype.atualizar = function (sub) {
+        var result = this.subs.find(function (a) { return a.aluno == sub.aluno; });
+        if (result) {
+            result.nota = sub.nota;
+            result.feedback = sub.feedback;
+        }
+        ;
+        return result;
+    };
     CadastroSubs.prototype.getSubs = function () {
         return this.subs;
     };
