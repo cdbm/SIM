@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { AlunoService } from './alunos/aluno.service';
 import {FeedbackService} from './feedback/feedback.service';
+import { SubmissaoComponent } from './submissao/submissao.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FeedbackService} from './feedback/feedback.service';
     AlocacaoComponent,
     CorrecaoComponent,
     LoginComponent,
-    AlunosComponent
+    AlunosComponent,
+    SubmissaoComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,10 @@ import {FeedbackService} from './feedback/feedback.service';
       {
         path: 'correcao',
         component: CorrecaoComponent
+      },
+      {
+        path: 'submissao', 
+        component: SubmissaoComponent
       }
     ])
   ],

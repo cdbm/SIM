@@ -28,6 +28,9 @@ export class FeedbackComponent implements OnInit {
   constructor(private feedbackService : FeedbackService, private subService : SubService) { }
 
   ngOnInit() {
+    this.subService.getSubs()
+         .then(as => this.subs = as)
+         .catch(erro => alert(erro));
   }
 
   enviarEmail(email){
@@ -55,6 +58,10 @@ export class FeedbackComponent implements OnInit {
       }
     );
     this.subs.push(this.submission2);
+  }
+
+  sendsub(a){
+    this.subService.receivesub(a);
   }
 
 

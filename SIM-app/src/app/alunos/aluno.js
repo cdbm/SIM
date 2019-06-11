@@ -29,11 +29,11 @@ var Aluno = /** @class */ (function () {
     Aluno.prototype.verificaAluno = function () {
         var conceitos = [];
         for (var key in this.criterios) {
-            conceitos.push(key);
             if (this.criterios[key] >= 0 && this.criterios[key] <= 10) {
             }
             else {
                 this.criterios[key] = '';
+                conceitos.push(key);
             }
         }
         return conceitos;
