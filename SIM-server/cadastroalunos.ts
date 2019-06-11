@@ -1,6 +1,6 @@
 import { Aluno } from '../SIM-app/src/app/alunos/aluno';
 
-export class CadastroDeAlunos {
+export class CadastroAlunos {
   alunos: Aluno[] = [];
 
   criar(aluno: Aluno): Aluno {
@@ -27,3 +27,4 @@ export class CadastroDeAlunos {
     return this.alunos;
   }
 }
+

@@ -36,6 +36,10 @@ import {FeedbackService} from './feedback/feedback.service';
       {
         path: 'feedbacks',
         component: FeedbackComponent
+      },
+      {
+        path: 'correcao',
+        component: CorrecaoComponent
       }
     ])
   ],
