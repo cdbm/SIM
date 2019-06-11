@@ -3,11 +3,13 @@ exports.__esModule = true;
 var express = require("express");
 var bodyParser = require("body-parser");
 var cadastroalunos_1 = require("./cadastroalunos");
+var cadastrosubs_1 = require("./cadastrosubs");
 //import {Mailer} from './mailer';
 var fs = require("fs");
 var app = express();
 exports.app = app;
 var cadastro = new cadastroalunos_1.CadastroDeAlunos();
+var cad = new cadastrosubs_1.CadastroSubs();
 //var mailer : Mailer = new Mailer();
 var allowCrossDomain = function (req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -20,6 +22,9 @@ app.use(bodyParser.json());
 app.get('/alunos', function (req, res) {
     res.send(JSON.stringify(cadastro.getAlunos()));
 });
+app.get('/subs', function (req, res) {
+    res.send(JSON.stringify(cad.getSubs()));
+});
 app.post('/aluno', function (req, res) {
     var aluno = req.body;
     aluno = cadastro.criar(aluno);
@@ -28,6 +33,16 @@ app.post('/aluno', function (req, res) {
     }
     else {
         res.send({ "failure": "O aluno não pode ser cadastrado" });
+    }
+});
+app.post('/sub', function (req, res) {
+    var sub = req.body;
+    sub = cad.criar(sub);
+    if (sub) {
+        res.send({ "success": "Submissão criada com sucesso" });
+    }
+    else {
+        res.send({ "failure": "A submissão não pode ser criada" });
     }
 });
 app.post('/sendemail', function (req, res) {
@@ -42,7 +57,7 @@ app.post('/sendemail', function (req, res) {
             console.log('Email enviado: ' + info.response);
         }
     });
-    res.send({ "success": "O aluno foi cadastrado com sucesso" });
+    res.send({ "success": "email enviado" });
 });
 app.put('/aluno', function (req, res) {
     var aluno = req.body;

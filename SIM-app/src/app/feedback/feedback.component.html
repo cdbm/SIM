@@ -15,3 +15,18 @@
      <td><input [(ngModel)]="email.text" ></td>
   </tr>
   </table>
+
+
+<button (click)="generate()"> Gerar Submissões</button>
+  <table>
+   <tr *ngIf="subs.length > 0">
+      <th>Aluno</th>
+      <th>Questão</th>
+      <th>Lista</th>
+   </tr>
+   <tr *ngFor="let a of subs">
+      <td>{{a.aluno}}</td>
+      <td>{{a.questao}}</td>
+      <td>{{a.lista}}</td>
+   </tr>
+   </table>

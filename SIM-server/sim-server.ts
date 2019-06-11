@@ -3,12 +3,15 @@ import bodyParser = require("body-parser");
 import nodemailer = require('nodemailer');
 import { Aluno } from '../SIM-app/src/app/alunos/aluno';
 import {CadastroDeAlunos} from './cadastroalunos';
+import {Sub} from "../SIM-app/src/app/feedback/sub";
+import {CadastroSubs} from "./cadastrosubs";
 //import {Mailer} from './mailer';
 
 import fs = require('fs');
 var app = express();
 
 var cadastro: CadastroDeAlunos = new CadastroDeAlunos();
+var cad : CadastroSubs = new CadastroSubs();
 //var mailer : Mailer = new Mailer();
 var allowCrossDomain = function(req: any, res: any, next: any) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -24,6 +27,11 @@ app.get('/alunos', function (req, res) {
   res.send(JSON.stringify(cadastro.getAlunos()));
 })
 
+app.get('/subs', function (req, res) {
+  res.send(JSON.stringify(cad.getSubs()));
+})
+
+
 app.post('/aluno', function (req: express.Request, res: express.Response) {
   var aluno: Aluno = <Aluno> req.body;
   aluno = cadastro.criar(aluno);
@@ -33,6 +41,17 @@ app.post('/aluno', function (req: express.Request, res: express.Response) {
     res.send({"failure": "O aluno não pode ser cadastrado"});
   }
 })
+app.post('/sub', function (req: express.Request, res: express.Response) {
+  var sub: Sub = <Sub> req.body;
+  sub = cad.criar(sub);
+  if (sub) {
+    res.send({"success": "Submissão criada com sucesso"});
+  } else {
+    res.send({"failure": "A submissão não pode ser criada"});
+  }
+})
+
+
 
 app.post('/sendemail', function (req: express.Request, res: express.Response) {
     
