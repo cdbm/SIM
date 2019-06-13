@@ -20,6 +20,10 @@ export class SubmissaoComponent implements OnInit {
   mudarNota(){
     //this.sub.nota = this.nota;
     //this.sub.feedback = this.feed;
+    if(this.sub.feedback != ""){
     this.subService.atualizar(this.sub);
+    }else{
+      window.alert("Por favor, insira um feedback");
+    }
   }
 }
