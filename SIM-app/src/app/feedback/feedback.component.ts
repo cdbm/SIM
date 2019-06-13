@@ -13,7 +13,7 @@ export class FeedbackComponent implements OnInit {
   email : Email = new Email();
   subs: Sub[] = [];
   aluno :string  = "Manoel Silva";
-  aluno2:string = "Amanda Soares";
+  aluno2:string = "Maria Soares";
   questao : number = 1;
   lista : number = 2;
   código : string = "Printf('Hello word')";
@@ -45,19 +45,19 @@ export class FeedbackComponent implements OnInit {
   }
 
   generate(){
-    this.subService.criar(this.submission).then(
+    this.subService.criar(this.submission2).then(
       ab => {
         
       }
 
     );
-    this.subs.push(this.submission);
-    this.subService.criar(this.submission2).then(
+    this.subs.push(this.submission2);
+    this.subService.criar(this.submission).then(
       ab => {
         
       }
     );
-    this.subs.push(this.submission2);
+    this.subs.push(this.submission);
   }
 
   sendsub(a){
