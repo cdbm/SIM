@@ -4,7 +4,9 @@
   "description": "Servidor do Sistema integrado de monitoria",
   "main": "sim-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine --config=./spec/support/jasmine.json",
+    "tsc": "tsc",
+    "start": "npm run tsc && node sim-server.js"
   },
   "author": "Rodrigo Albuquerque",
   "license": "MIT",
@@ -12,8 +14,16 @@
     "@types/body-parser": "^1.16.5",
     "@types/express": "^4.0.37",
     "body-parser": "^1.18.2",
+    "request": "^2.34",
     "express": "^4.15.4",
     "nodemailer": "^6.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/jasmine": "^2.8.9",
+    "@types/request-promise": "^4.1.38",
+    "jasmine": "^2.8.0",
+    "jasmine-promises": "^0.4.1",
+    "request-promise": "^4.2.2",
+    "typescript": "^3.3.3333"
+  }
 }
